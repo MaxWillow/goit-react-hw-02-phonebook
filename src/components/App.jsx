@@ -4,6 +4,13 @@ import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 
+const containerStyles = {
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  width: 355,
+  fontFamily: 'Roboto',
+};
+
 export default class App extends Component {
   state = {
     contacts: [],
@@ -28,9 +35,14 @@ export default class App extends Component {
       id: uuidv4(),
     };
 
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
-    }));
+    if (name && number) {
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, newContact],
+      }));
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Please fill the empty fields');
+    }
   };
 
   deleteContact = id => {
@@ -56,7 +68,7 @@ export default class App extends Component {
     const filteredContacts = this.filterContacts(contacts, filter);
 
     return (
-      <div>
+      <div style={containerStyles}>
         <h2>Phonebook</h2>
         <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>

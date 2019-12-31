@@ -1,10 +1,17 @@
 import React from 'react';
 import T from 'prop-types';
+import styles from './Filter.module.css';
 
 const Filter = ({ filterValue, onFilterChange }) => (
   <>
-    <p>Find contacts by name</p>
-    <input id="filter" value={filterValue} onChange={onFilterChange} />
+    <p className={styles.text}>Find contacts by name</p>
+    <input
+      id="filter"
+      value={filterValue}
+      placeholder="Print the name that you want to find..."
+      onChange={onFilterChange}
+      className={styles.input}
+    />
   </>
 );
 

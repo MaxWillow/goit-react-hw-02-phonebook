@@ -1,10 +1,11 @@
 import React from 'react';
 import T from 'prop-types';
+import styles from './ContactItem.module.css';
 
 const ContactItem = ({ contact, onDeleteContact }) => (
-  <li>
-    <p>{`${contact.name}: ${contact.number}`}</p>
-    <button type="button" onClick={onDeleteContact}>
+  <li className={styles.outline}>
+    <p className={styles.text}>{`${contact.name}: ${contact.number}`}</p>
+    <button type="button" onClick={onDeleteContact} className={styles.button}>
       Delete
     </button>
   </li>
