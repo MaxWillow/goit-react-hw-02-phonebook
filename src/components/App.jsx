@@ -20,22 +20,20 @@ export default class App extends Component {
   addContact = (name, number) => {
     const { contacts } = this.state;
 
-    const existedContact = contacts.find(
-      contact => contact.name.toLowerCase() === name.toLowerCase(),
-    );
-    if (existedContact) {
-      // eslint-disable-next-line no-alert
-      alert(`${name} is aleready in contacts`);
-      return;
-    }
-
     const newContact = {
       name,
       number,
       id: uuidv4(),
     };
 
-    if (name && number) {
+    const existedContact = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
+    );
+
+    if (existedContact) {
+      // eslint-disable-next-line no-alert
+      alert(`${name} is aleready in contacts`);
+    } else if (name && number) {
       this.setState(prevState => ({
         contacts: [...prevState.contacts, newContact],
       }));

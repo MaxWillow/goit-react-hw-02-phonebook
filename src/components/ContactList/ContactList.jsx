@@ -16,7 +16,13 @@ const ContactList = ({ filteredContacts, onDeleteContact }) => (
 );
 
 ContactList.propTypes = {
-  filteredContacts: T.arrayOf(T.object).isRequired,
+  filteredContacts: T.arrayOf(
+    T.shape({
+      name: T.string.isRequired,
+      number: T.string.isRequired,
+      id: T.string.isRequired,
+    }),
+  ).isRequired,
   onDeleteContact: T.func.isRequired,
 };
 
